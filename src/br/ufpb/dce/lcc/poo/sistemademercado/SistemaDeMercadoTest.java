@@ -11,6 +11,7 @@ public class SistemaDeMercadoTest {
 	@Before
 	public void iniciar () {
 		sistema = new SistemaDeMercado ();
+		assertFalse ("O sistema iniciou acabado", sistema.finalizou());
 	}
 	@Test
 	public void criarSistema() {

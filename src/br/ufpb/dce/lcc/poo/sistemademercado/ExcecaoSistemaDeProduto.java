@@ -1,4 +1,4 @@
-package br.ufpb.dce.poo.mercado;
+package br.ufpb.dce.lcc.poo.sistemademercado;
 
 public class ExcecaoSistemaDeProduto extends RuntimeException{
 	
