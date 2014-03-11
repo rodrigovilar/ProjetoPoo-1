@@ -2,9 +2,12 @@ package br.ufpb.dce.lcc.poo.sistemademercado;
 
 public class SistemaDeMercado {
 	GerenteDeFuncionario funcionarios;
+	GerenteDeProduto produtos;
 	
 	public SistemaDeMercado () {
 		funcionarios = new GerenteDeFuncionario ();
+		produtos = new GerenteDeProduto ();
+		
 	}
 	        
 	public void cadastraFuncionario (String n, String cpf, String funcao) {
@@ -23,6 +26,17 @@ public class SistemaDeMercado {
 	public boolean finalizou () {
 		return false;
 	}
+
+	public void cadastraProduto(String nome, int codigo, double preco) {
+		produtos.cadastra(nome, codigo, preco);
+		
+	}
+
+	public Produto pesquisaProdutoPorNome(String nome) {
+		return produtos.pesquisaPorNome(nome);
+		
+	}
+	
 	
 }
 

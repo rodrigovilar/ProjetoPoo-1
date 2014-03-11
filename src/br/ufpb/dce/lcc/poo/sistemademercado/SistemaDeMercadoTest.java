@@ -21,9 +21,9 @@ public class SistemaDeMercadoTest {
 	}
 	@Test
 	public void removerFuncionarioDoSistemaPorCPF () {
-		sistema.cadastraFuncionario("edu","12345","Caixa");
-		sistema.removeFuncionarioPorCPF("12345");
-		assertNull (sistema.pesquisaFuncionarioPorNome("edu"));
+		sistema.cadastraFuncionario("edu","123","Caixa");
+		sistema.removeFuncionarioPorCPF("123");
+		assertNull (sistema.pesquisaFuncionarioPorCPF("12345"));
 	}
 	@Test
 	public void pesquisarFuncionarioNoSistemaPeloNome () {
@@ -43,7 +43,15 @@ public class SistemaDeMercadoTest {
 	@Test (expected = ExcecaoSistemaDeMercado.class)
 	public void removerFuncionarioPorCPFQueNaoEstaNoSistema () {
 		sistema.removeFuncionarioPorCPF("32344");
-	}	
+	}
+	@Test
+	public void cadastrarProduto(){
+		sistema.cadastraProduto("leite", 1234, 8.00);
+		assertNotNull(sistema.pesquisaProdutoPorNome("leite"));
+		
+	}
+	
+	
 		
 		
 		
