@@ -50,9 +50,35 @@ public class SistemaDeMercadoTest {
 		assertNotNull(sistema.pesquisaProdutoPorNome("leite"));
 		
 	}
+	@Test
+	public void pesquisarProdutoNome(){
+		this.cadastrarProduto();
+		assertNotNull(sistema.pesquisaProdutoPorNome("leite"));
+	}
+	@Test (expected = ExcecaoSistemaDeProduto.class)
+	public void RemoverProduto(){
+		sistema.removeProdutoPorNome("leite");		
+	}
+	@Test
+	public void pesquisarProdutoPorCodigo(){
+		this.cadastrarProduto();
+		assertNotNull(sistema.pesquisaProdutoPorCodigo(1234));
+	}
+	@Test
+	public void cadastrarFornecedor(){
+		sistema.cadastraFornecedor("Fornecedor de Leite", "Rio Tinto", 1015,"1015-2020");
+		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Leite"));
+	}
+	@Test
+	public void pesquisaPorFornecedor(){
+		this.cadastrarFornecedor();
+		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Leite"));
+	}
+	@Test (expected = ExcecaoSistemaDeFornecedor.class)
+	public void removerFornecedor(){
+		sistema.removerFornecedorPornome("Fornecedor de Leite");
+	}
 	
 	
-		
-		
-		
+			
 }

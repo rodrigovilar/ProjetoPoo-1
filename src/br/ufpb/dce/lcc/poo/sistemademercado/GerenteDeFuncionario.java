@@ -27,8 +27,9 @@ public class GerenteDeFuncionario {
 			if (f.getCpf().equals(cpf))
 				this.funcionarios.remove(f);
 				removeu = true;
+				break;
 		}
-		if (removeu == false) {
+		if (!removeu) {
 			throw new ExcecaoSistemaDeMercado ("Funcionario nao Existente no Sistema!");
 		}
 	}

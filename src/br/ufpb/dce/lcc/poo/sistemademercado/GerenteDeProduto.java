@@ -24,6 +24,30 @@ public class GerenteDeProduto {
 		}
 		
 		return null;
+	}
+
+	public void removePorNome(String nome){
+		boolean remove = false;
+		for(Produto p: this.produtos){
+			if(p.getNome().equals(nome)){
+				this.produtos.remove(p);
+				remove = true;
+				break;
+			}
+		}if(!remove){
+			throw new ExcecaoSistemaDeProduto("O produto não encontrado");
+		}
+		
+	}
+
+	public Produto pesquisaPorCodigo(int codigo){		
+		for(Produto p: this.produtos){
+			if(p.getCodigo() == (codigo)){
+				return p;
+			}
+		}
+		throw new ExcecaoSistemaDeProduto("O produto não encontrado");
+		
 	}	
 
 }

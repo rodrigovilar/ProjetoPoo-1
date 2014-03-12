@@ -3,10 +3,12 @@ package br.ufpb.dce.lcc.poo.sistemademercado;
 public class SistemaDeMercado {
 	GerenteDeFuncionario funcionarios;
 	GerenteDeProduto produtos;
+	GerenteDeFornecedor fornecedores;
 	
 	public SistemaDeMercado () {
 		funcionarios = new GerenteDeFuncionario ();
 		produtos = new GerenteDeProduto ();
+		fornecedores = new GerenteDeFornecedor();
 		
 	}
 	        
@@ -34,6 +36,30 @@ public class SistemaDeMercado {
 
 	public Produto pesquisaProdutoPorNome(String nome) {
 		return produtos.pesquisaPorNome(nome);
+		
+	}
+
+	public void removeProdutoPorNome(String nome) {
+		produtos.removePorNome(nome);
+		
+	}
+
+	public Produto pesquisaProdutoPorCodigo(int codigo) {
+		return produtos.pesquisaPorCodigo(codigo);
+		
+	}
+
+
+	public void cadastraFornecedor(String nome, String cidade, int telefone, String cnpj) {
+		fornecedores.cadastra(nome, cidade,telefone, cnpj);
+	}
+
+	public Fornecedor pesquisaFornecedorPeloNome(String nome) {
+		return fornecedores.pesquisaPorNome(nome);
+	}
+
+	public void removerFornecedorPornome(String nome) {
+		fornecedores.removeFornecedorPorNome(nome);
 		
 	}
 	
