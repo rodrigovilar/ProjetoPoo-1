@@ -83,6 +83,19 @@ public class SistemaDeMercadoTest {
 		sistema.cadastroDeCliente("Fabio","1212121","Centro");
 		assertNotNull(sistema.pesquisaClientePorNome("Fabio"));
 	}
+	@Test
+	public void pesquisarCliente(){
+		this.cadastrarCliente();
+		assertNotNull(sistema.pesquisaClientePorNome("Fabio"));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 			
