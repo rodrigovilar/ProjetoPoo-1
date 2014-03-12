@@ -80,23 +80,21 @@ public class SistemaDeMercadoTest {
 	}
 	@Test
 	public void cadastrarCliente(){
-		sistema.cadastroDeCliente("Fabio","1212121","Centro");
+		sistema.cadastroDeCliente("Fabio","2014","Centro");
 		assertNotNull(sistema.pesquisaClientePorNome("Fabio"));
 	}
 	@Test
-	public void pesquisarCliente(){
+	public void pesquisarClientePorNome(){
 		this.cadastrarCliente();
 		assertNotNull(sistema.pesquisaClientePorNome("Fabio"));
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-			
+	@Test
+	public void pesquisarClientePorCpf(){
+		this.cadastrarCliente();
+		assertNotNull(sistema.pesquisaClientePorCpf("2014"));
+	}
+	@Test (expected = ExcecaoSistemaDeCliente.class)
+	public void removerCliente(){
+		sistema.removeClientePorNome("Fabio");
+	}			
 }

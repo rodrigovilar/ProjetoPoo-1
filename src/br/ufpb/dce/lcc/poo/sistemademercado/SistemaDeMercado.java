@@ -73,6 +73,15 @@ public class SistemaDeMercado {
 	public Cliente pesquisaClientePorNome(String nome) {
 		return clientes.pesquisaPorNome(nome);
 	}
+
+	public Cliente pesquisaClientePorCpf(String cpf) {
+		return clientes.pesquisaPorCpf(cpf);
+	}
+
+	public void removeClientePorNome(String nome) {
+		clientes.removerClientePorNome(nome);
+		
+	}
 	
 	
 }
