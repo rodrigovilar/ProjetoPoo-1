@@ -78,6 +78,11 @@ public class SistemaDeMercadoTest {
 	public void removerFornecedor(){
 		sistema.removerFornecedorPornome("Fornecedor de Leite");
 	}
+	@Test
+	public void cadastrarCliente(){
+		sistema.cadastroDeCliente("Fabio","1212121","Centro");
+		assertNotNull(sistema.pesquisaClientePorNome("Fabio"));
+	}
 	
 	
 			

@@ -4,11 +4,13 @@ public class SistemaDeMercado {
 	GerenteDeFuncionario funcionarios;
 	GerenteDeProduto produtos;
 	GerenteDeFornecedor fornecedores;
+	GerenteDeCliente clientes;
 	
 	public SistemaDeMercado () {
 		funcionarios = new GerenteDeFuncionario ();
 		produtos = new GerenteDeProduto ();
 		fornecedores = new GerenteDeFornecedor();
+		clientes = new GerenteDeCliente();
 		
 	}
 	        
@@ -61,6 +63,15 @@ public class SistemaDeMercado {
 	public void removerFornecedorPornome(String nome) {
 		fornecedores.removeFornecedorPorNome(nome);
 		
+	}
+
+	public void cadastroDeCliente(String nome, String cpf, String endereco) {
+		clientes.cadastra(nome, cpf, endereco);
+		
+	}
+
+	public Cliente pesquisaClientePorNome(String nome) {
+		return clientes.pesquisaPorNome(nome);
 	}
 	
 	
