@@ -41,8 +41,8 @@ public class SistemaDeMercado {
 		
 	}
 
-	public void removeProdutoPorNome(String nome) {
-		produtos.removePorNome(nome);
+	public void removeProdutoPorCodigo(int cod) {
+		produtos.removePorCodigo(cod);
 		
 	}
 

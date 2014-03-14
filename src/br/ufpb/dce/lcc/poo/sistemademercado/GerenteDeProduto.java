@@ -26,15 +26,16 @@ public class GerenteDeProduto {
 		return null;
 	}
 
-	public void removePorNome(String nome){
+	public void removePorCodigo(int codigo){
 		boolean remove = false;
 		for(Produto p: this.produtos){
-			if(p.getNome().equals(nome)){
+			if(p.getCodigo() == codigo){
 				this.produtos.remove(p);
 				remove = true;
 				break;
 			}
-		}if(remove == false){
+		}
+		if(!remove){
 			throw new ExcecaoSistemaDeProduto("Produto não encontrado");
 		}
 	}

@@ -67,15 +67,15 @@ public class SistemaDeMercadoTest {
 	public void pesquisarProdutoInexistentePassandoNome () {
 		assertNull(sistema.pesquisaProdutoPorNome("feijão"));
 	}
-	@Test 
-	public void removerProdutoPassandoNome(){
+	@Test (expected = ExcecaoSistemaDeProduto.class)
+	public void removerProdutoPassandoCodigo(){
 		this.cadastrarProduto();
-		sistema.removeProdutoPorNome("leite");
-		assertNull (sistema.pesquisaProdutoPorNome("leite"));
+		sistema.removeProdutoPorCodigo(1234);
+		sistema.pesquisaProdutoPorCodigo(1234);
 	}
 	@Test (expected = ExcecaoSistemaDeProduto.class)
-	public void removerProdutoPorInexistentePassandoNome () {
-		sistema.removeProdutoPorNome("leite");
+	public void removerProdutoPorInexistentePassandoCodigo () {
+		sistema.removeProdutoPorCodigo(10);
 	} 
 	@Test
 	public void pesquisarProdutoPorCodigo(){
