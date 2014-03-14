@@ -14,7 +14,7 @@ public class SistemaDeMercadoTest {
 		assertFalse ("O sistema iniciou acabado", sistema.finalizou());
 	}
 	
-	@Test
+	@Test                                                                      // TESTES FUNCIONARIO
 	public void cadastrarFuncionarioNoSistema () {
 		sistema.cadastraFuncionario("edu","12345","Caixa");
 		assertNotNull(sistema.pesquisaFuncionarioPorNome("edu"));
@@ -44,27 +44,33 @@ public class SistemaDeMercadoTest {
 	public void removerFuncionarioPorCPFQueNaoEstaNoSistema () {
 		sistema.removeFuncionarioPorCPF("32344");
 	}
-	@Test
+	@Test                                                                             //TESTES PRODUTO
 	public void cadastrarProduto(){
 		sistema.cadastraProduto("leite", 1234, 8.00);
 		assertNotNull(sistema.pesquisaProdutoPorNome("leite"));
-		
 	}
 	@Test
 	public void pesquisarProdutoNome(){
 		this.cadastrarProduto();
 		assertNotNull(sistema.pesquisaProdutoPorNome("leite"));
 	}
-	@Test (expected = ExcecaoSistemaDeProduto.class)
-	public void RemoverProduto(){
-		sistema.removeProdutoPorNome("leite");		
+	@Test 
+	public void removerProdutoPassandoNome(){
+		this.cadastrarProduto();
+		sistema.removeProdutoPorNome("leite");
+		assertNull (sistema.pesquisaProdutoPorNome("leite"));
 	}
+	@Test (expected = ExcecaoSistemaDeProduto.class)
+	public void removerProdutoPorInexistentePassandoNome () {
+		sistema.removeProdutoPorNome("leite");
+	} 
+
 	@Test
 	public void pesquisarProdutoPorCodigo(){
 		this.cadastrarProduto();
 		assertNotNull(sistema.pesquisaProdutoPorCodigo(1234));
 	}
-	@Test
+	@Test                                                                                  //TESTES FORNECEDOR
 	public void cadastrarFornecedor(){
 		sistema.cadastraFornecedor("Fornecedor de Leite", "Rio Tinto", 1015,"1015-2020");
 		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Leite"));
@@ -79,7 +85,7 @@ public class SistemaDeMercadoTest {
 		sistema.removerFornecedorPornome("Fornecedor de Leite");
 	}
 	@Test
-	public void cadastrarCliente(){
+	public void cadastrarCliente(){                                                  // TESTES CLIENTE
 		sistema.cadastroDeCliente("Fabio","2014","Centro");
 		assertNotNull(sistema.pesquisaClientePorNome("Fabio"));
 	}

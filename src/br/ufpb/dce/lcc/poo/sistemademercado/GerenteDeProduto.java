@@ -34,10 +34,9 @@ public class GerenteDeProduto {
 				remove = true;
 				break;
 			}
-		}if(!remove){
-			throw new ExcecaoSistemaDeProduto("O produto não encontrado");
+		}if(remove == false){
+			throw new ExcecaoSistemaDeProduto("Produto não encontrado");
 		}
-		
 	}
 
 	public Produto pesquisaPorCodigo(int codigo){		
@@ -46,8 +45,8 @@ public class GerenteDeProduto {
 				return p;
 			}
 		}
-		throw new ExcecaoSistemaDeProduto("O produto não encontrado");
 		
+		throw new ExcecaoSistemaDeProduto("O produto não encontrado");
 	}	
 
 }
