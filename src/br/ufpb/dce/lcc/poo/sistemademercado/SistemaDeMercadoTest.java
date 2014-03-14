@@ -55,6 +55,10 @@ public class SistemaDeMercadoTest {
 		assertNotNull(sistema.pesquisaProdutoPorNome("leite"));
 	}
 	@Test 
+	public void pesquisarProdutoInexistentePassandoNome () {
+		assertNull(sistema.pesquisaProdutoPorNome("feijão"));
+	}
+	@Test 
 	public void removerProdutoPassandoNome(){
 		this.cadastrarProduto();
 		sistema.removeProdutoPorNome("leite");
@@ -64,7 +68,6 @@ public class SistemaDeMercadoTest {
 	public void removerProdutoPorInexistentePassandoNome () {
 		sistema.removeProdutoPorNome("leite");
 	} 
-
 	@Test
 	public void pesquisarProdutoPorCodigo(){
 		this.cadastrarProduto();
