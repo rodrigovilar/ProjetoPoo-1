@@ -44,6 +44,15 @@ public class SistemaDeMercadoTest {
 	public void removerFuncionarioPorCPFQueNaoEstaNoSistema () {
 		sistema.removeFuncionarioPorCPF("32344");
 	}
+	@Test
+	public void pesquisarFuncionarioPorCPFQueNaoEstaNoSistema(){
+		assertNull(sistema.pesquisaFuncionarioPorCPF("1010"));
+	}
+	@Test
+	public void pesquisarFuncionarioPornomeQueNaoEstaNoSistema(){
+		assertNull(sistema.pesquisaFuncionarioPorNome("edu"));
+	}
+	
 	@Test                                                                             //TESTES PRODUTO
 	public void cadastrarProduto(){
 		sistema.cadastraProduto("leite", 1234, 8.00);
@@ -105,5 +114,16 @@ public class SistemaDeMercadoTest {
 	@Test (expected = ExcecaoSistemaDeCliente.class)
 	public void removerCliente(){
 		sistema.removeClientePorNome("Fabio");
-	}			
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
