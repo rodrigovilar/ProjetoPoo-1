@@ -13,7 +13,6 @@ public class SistemaDeMercadoTest {
 		sistema = new SistemaDeMercado ();
 		assertFalse ("O sistema iniciou acabado", sistema.finalizou());
 	}
-	
 	@Test                                                                      // TESTES FUNCIONARIO
 	public void cadastrarFuncionarioNoSistema () {
 		sistema.cadastraFuncionario("edu","12345","Caixa");
@@ -52,7 +51,6 @@ public class SistemaDeMercadoTest {
 	public void pesquisarFuncionarioPornomeQueNaoEstaNoSistema(){
 		assertNull(sistema.pesquisaFuncionarioPorNome("edu"));
 	}
-	
 	@Test                                                                             //TESTES PRODUTO
 	public void cadastrarProduto(){
 		sistema.cadastraProduto("leite", 1234, 8.00);
@@ -136,6 +134,10 @@ public class SistemaDeMercadoTest {
 	@Test (expected = ExcecaoSistemaDeCliente.class)
 	public void pesquisarClienteInexistentePorCpf () {
 		sistema.pesquisaClientePorCpf("123456789");
+	}
+	@Test (expected = ExcecaoSistemaDeCliente.class)
+	public void removerClienteInexistente () {
+		sistema.removeClientePorCpf("12345");
 	}
 }
 
