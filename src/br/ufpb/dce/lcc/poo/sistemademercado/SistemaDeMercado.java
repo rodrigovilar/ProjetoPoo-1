@@ -5,12 +5,15 @@ public class SistemaDeMercado {
 	GerenteDeProduto produtos;
 	GerenteDeFornecedor fornecedores;
 	GerenteDeCliente clientes;
+	Caixa caixas;
 	
 	public SistemaDeMercado () {
 		funcionarios = new GerenteDeFuncionario ();
 		produtos = new GerenteDeProduto ();
 		fornecedores = new GerenteDeFornecedor();
 		clientes = new GerenteDeCliente();
+		caixas = new Caixa();
+		
 		
 	}
 	        
@@ -83,6 +86,11 @@ public class SistemaDeMercado {
 
 	public void removeClientePorCpf (String cpf) {
 		clientes.removerClientePorCpf (cpf);
+		
+	}
+
+	public void iniciaCaixa(String data) {
+		caixas.iniciar(data);
 		
 	}
 	

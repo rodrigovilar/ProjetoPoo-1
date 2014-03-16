@@ -139,6 +139,12 @@ public class SistemaDeMercadoTest {
 	public void removerClienteInexistente () {
 		sistema.removeClientePorCpf("12345");
 	}
+	@Test
+	public void iniciarCaixa(){
+		sistema.iniciaCaixa("16/10/12014");
+		assertFalse (sistema.finalizou());
+		
+	}
 }
 
 
