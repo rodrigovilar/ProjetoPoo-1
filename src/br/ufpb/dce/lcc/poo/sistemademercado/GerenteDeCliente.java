@@ -38,10 +38,10 @@ public class GerenteDeCliente {
 		throw new ExcecaoSistemaDeCliente("Cliente Inexistente");
 	}
 
-	public void removerClientePorNome(String nome) {
+	public void removerClientePorCpf(String cpf) {
 		boolean remove = false;
 		for(Cliente cli: this.clientes){
-			if(cli.getNome().equals(nome)){
+			if(cli.getCpf().equals(cpf)){
 				this.clientes.remove(cli);
 				remove = true;
 				

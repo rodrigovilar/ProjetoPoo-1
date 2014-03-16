@@ -125,7 +125,9 @@ public class SistemaDeMercadoTest {
 	}
 	@Test (expected = ExcecaoSistemaDeCliente.class)
 	public void removerCliente(){
-		sistema.removeClientePorNome("Fabio");
+		this.cadastrarCliente();
+		sistema.removeClientePorCpf("2014");
+		sistema.pesquisaClientePorCpf ("2014");
 	}
 	@Test (expected = ExcecaoSistemaDeCliente.class)
 	public void pesquisarClienteInexistentePorNome () {

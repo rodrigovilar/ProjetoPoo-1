@@ -81,8 +81,8 @@ public class SistemaDeMercado {
 		return clientes.pesquisaPorCpf(cpf);
 	}
 
-	public void removeClientePorNome(String nome) {
-		clientes.removerClientePorNome(nome);
+	public void removeClientePorCpf (String cpf) {
+		clientes.removerClientePorCpf (cpf);
 		
 	}
 	
