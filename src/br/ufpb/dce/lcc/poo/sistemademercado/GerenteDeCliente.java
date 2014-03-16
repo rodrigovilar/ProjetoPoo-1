@@ -44,7 +44,7 @@ public class GerenteDeCliente {
 			if(cli.getCpf().equals(cpf)){
 				this.clientes.remove(cli);
 				remove = true;
-				
+				break;
 			}
 		}
 		if(!remove){
