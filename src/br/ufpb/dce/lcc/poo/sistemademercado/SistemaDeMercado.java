@@ -5,14 +5,14 @@ public class SistemaDeMercado {
 	GerenteDeProduto produtos;
 	GerenteDeFornecedor fornecedores;
 	GerenteDeCliente clientes;
-	Caixa caixas;
+	GerenteDeCaixa caixas;
 	
 	public SistemaDeMercado () {
 		funcionarios = new GerenteDeFuncionario ();
 		produtos = new GerenteDeProduto ();
 		fornecedores = new GerenteDeFornecedor();
 		clientes = new GerenteDeCliente();
-		caixas = new Caixa();
+		caixas = new GerenteDeCaixa();
 		
 		
 	}
@@ -89,9 +89,12 @@ public class SistemaDeMercado {
 		
 	}
 
-	public void iniciaCaixa(String data) {
-		caixas.iniciar(data);
-		
+	public void iniciaCaixaDiario (String data) {
+		this.caixas.registrar(data);
+	}
+
+	public CaixaDiario pesquisarCaixaDiario(String data) {
+        return this.caixas.pesquisarDiaria (data);
 	}
 	
 	

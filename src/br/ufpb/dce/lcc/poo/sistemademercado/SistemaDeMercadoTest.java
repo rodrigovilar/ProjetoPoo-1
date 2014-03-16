@@ -140,10 +140,14 @@ public class SistemaDeMercadoTest {
 		sistema.removeClientePorCpf("12345");
 	}
 	@Test
-	public void iniciarCaixa(){
-		sistema.iniciaCaixa("16/10/12014");
-		assertFalse (sistema.finalizou());
-		
+	public void iniciarCaixaDiario(){
+		sistema.iniciaCaixaDiario ("16/10/2014");
+		assertNotNull (sistema.pesquisarCaixaDiario("16/10/2014"));
+	}
+	@Test (expected = ExcecaoSistemaDeCaixa.class)
+	public void inserirCaixaComDataJaExistente () {
+		this.iniciarCaixaDiario();
+		this.iniciarCaixaDiario();
 	}
 }
 
