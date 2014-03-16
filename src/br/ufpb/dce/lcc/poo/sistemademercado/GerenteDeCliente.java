@@ -11,9 +11,13 @@ public class GerenteDeCliente {
 	}
 
 	public void cadastra(String nome, String cpf, String endereco) {
-		Cliente p = new Cliente(nome, cpf, endereco);
-		clientes.add(p);
-		
+		for (Cliente c: this.clientes) {
+			if (c.getCpf().equals(cpf)) {
+				throw new ExcecaoSistemaDeCliente ("Cliente já existe!");
+			}
+		}
+		Cliente cliente = new Cliente (nome, cpf, endereco);
+		this.clientes.add(cliente);
 	}
 
 	public Cliente pesquisaPorNome(String nome) {

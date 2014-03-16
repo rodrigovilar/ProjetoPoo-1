@@ -11,6 +11,11 @@ public class GerenteDeFornecedor {
 	}
 
 	public void cadastra(String nome, String cidade, int telefone, String cnpj) {
+		for (Fornecedor f: this.fornecedores) {
+			if (f.getCnpj().equals(cnpj)) {
+				throw new ExcecaoSistemaDeFornecedor ("Fornecedor já existe!");
+			}
+		}
 		Fornecedor f = new Fornecedor(nome, cidade, telefone, cnpj);
 		fornecedores.add(f);
 		
@@ -18,17 +23,25 @@ public class GerenteDeFornecedor {
 
 	public Fornecedor pesquisaPorNome(String nome) {
 		for(Fornecedor f: this.fornecedores){
-			if(f.getNemoFornecedor().equals(nome)){
+			if(f.getNome().equals(nome)){
+				return f;
+			}
+		}
+		return null;
+	}
+	public Fornecedor pesquisaPorCnpj (String cnpj) {
+		for(Fornecedor f: this.fornecedores){
+			if(f.getCnpj().equals(cnpj)){
 				return f;
 			}
 		}
 		return null;
 	}
 
-	public void removeFornecedorPorNome(String nome) {
+	public void removeFornecedorPorCnpj (String cnpj) {
 		boolean remove = false;
 		for(Fornecedor f: this.fornecedores){
-			if(f.getNemoFornecedor().equals(nome)){
+			if(f.getCnpj().equals(cnpj)){
 				this.fornecedores.remove(f);
 				remove = true;
 				break;

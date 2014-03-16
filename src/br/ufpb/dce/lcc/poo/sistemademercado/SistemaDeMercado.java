@@ -53,16 +53,19 @@ public class SistemaDeMercado {
 
 
 	public void cadastraFornecedor(String nome, String cidade, int telefone, String cnpj) {
-		fornecedores.cadastra(nome, cidade,telefone, cnpj);
+		this.fornecedores.cadastra(nome, cidade,telefone, cnpj);
 	}
 
 	public Fornecedor pesquisaFornecedorPeloNome(String nome) {
-		return fornecedores.pesquisaPorNome(nome);
+		return this.fornecedores.pesquisaPorNome(nome);
+	}
+	
+	public Fornecedor pesquisaFornecedorPorCnpj (String cnpj) {
+		return this.fornecedores.pesquisaPorCnpj(cnpj); 
 	}
 
-	public void removerFornecedorPornome(String nome) {
-		fornecedores.removeFornecedorPorNome(nome);
-		
+	public void removerFornecedorPorCnpj(String cnpj) {
+		fornecedores.removeFornecedorPorCnpj(cnpj);
 	}
 
 	public void cadastroDeCliente(String nome, String cpf, String endereco) {

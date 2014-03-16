@@ -1,42 +1,48 @@
 package br.ufpb.dce.lcc.poo.sistemademercado;
 
 public class Fornecedor {
-	private String nemoFornecedor;
-	private String CidadeDoFornecedor;
-	private int TelefoneDoFornecedor;
-	private String cnpjDoFornecedor;
+	private String nome;
+	private String cidade;
+	private int telefone;
+	private String cnpj;
 	
-	public Fornecedor(String nemoFornecedor, String CidadeDoFornecedor, int TelefoneDoFornecedor, String cnpjDoFornecedor){
-		this.nemoFornecedor = nemoFornecedor;
-		this.CidadeDoFornecedor = CidadeDoFornecedor;
-		this.TelefoneDoFornecedor = TelefoneDoFornecedor;
-		this.cnpjDoFornecedor = cnpjDoFornecedor;
+	public Fornecedor(String nome, String cidade, int telefone, String cnpj){
+		this.setNome(nome);
+		this.setCidade(cidade);
+		this.setTelefone(telefone);
+		this.setCnpj(cnpj);
 	}
-	public String getNemoFornecedor() {
-		return nemoFornecedor;
-	}
-	public void setNemoFornecedor(String nemoFornecedor) {
-		this.nemoFornecedor = nemoFornecedor;
-	}
-	public String getCidadeDoFornecedor() {
-		return CidadeDoFornecedor;
-	}
-	public void setCidadeDoFornecedor(String cidadeDoFornecedor) {
-		CidadeDoFornecedor = cidadeDoFornecedor;
-	}
-	public int getTelefoneDoFornecedor() {
-		return TelefoneDoFornecedor;
-	}
-	public void setTelefoneDoFornecedor(int telefoneDoFornecedor) {
-		TelefoneDoFornecedor = telefoneDoFornecedor;
-	}
-	public String getCnpjDoFornecedor() {
-		return cnpjDoFornecedor;
-	}
-	public void setCnpjDoFornecedor(String cnpjDoFornecedor) {
-		this.cnpjDoFornecedor = cnpjDoFornecedor;
-	}
-	
-	
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public int getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(int telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	
 }

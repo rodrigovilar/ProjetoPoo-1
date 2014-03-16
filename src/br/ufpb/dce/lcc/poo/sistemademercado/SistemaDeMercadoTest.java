@@ -84,23 +84,35 @@ public class SistemaDeMercadoTest {
 	}
 	@Test                                                                                  //TESTES FORNECEDOR
 	public void cadastrarFornecedor(){
-		sistema.cadastraFornecedor("Fornecedor de Leite", "Rio Tinto", 1015,"1015-2020");
+		sistema.cadastraFornecedor("Fornecedor de Leite", "Rio Tinto", 88888888,"12345678");
 		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Leite"));
 	}
+	@Test (expected = ExcecaoSistemaDeFornecedor.class)
+	public void cadastraMesmoFornecedor () {
+		this.cadastrarFornecedor();
+		this.cadastrarFornecedor();
+    }
 	@Test
 	public void pesquisaPorFornecedor(){
 		this.cadastrarFornecedor();
 		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Leite"));
 	}
-	@Test (expected = ExcecaoSistemaDeFornecedor.class)
+	@Test 
 	public void removerFornecedor(){
-		sistema.removerFornecedorPornome("Fornecedor de Leite");
+		this.cadastrarFornecedor();
+		sistema.removerFornecedorPorCnpj("12345678");
+		assertNull (sistema.pesquisaFornecedorPorCnpj("12345678"));
 	}
 	@Test
 	public void cadastrarCliente(){                                                  // TESTES CLIENTE
 		sistema.cadastroDeCliente("Fabio","2014","Centro");
 		assertNotNull(sistema.pesquisaClientePorNome("Fabio"));
 	}
+	@Test (expected = ExcecaoSistemaDeCliente.class)
+	public void cadastrarMesmoCliente () {
+		this.cadastrarCliente();
+		this.cadastrarCliente();
+	}  
 	@Test
 	public void pesquisarClientePorNome(){
 		this.cadastrarCliente();
@@ -115,8 +127,14 @@ public class SistemaDeMercadoTest {
 	public void removerCliente(){
 		sistema.removeClientePorNome("Fabio");
 	}
-	
-	
+	@Test (expected = ExcecaoSistemaDeCliente.class)
+	public void pesquisarClienteInexistentePorNome () {
+		sistema.pesquisaClientePorNome("Eduardo");
+	}
+	@Test (expected = ExcecaoSistemaDeCliente.class)
+	public void pesquisarClienteInexistentePorCpf () {
+		sistema.pesquisaClientePorCpf("123456789");
+	}
 }
 
 
