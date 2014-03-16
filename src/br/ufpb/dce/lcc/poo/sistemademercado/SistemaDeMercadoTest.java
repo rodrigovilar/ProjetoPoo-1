@@ -140,14 +140,19 @@ public class SistemaDeMercadoTest {
 		sistema.removeClientePorCpf("12345");
 	}
 	@Test
-	public void iniciarCaixaDiario(){
+	public void iniciarCaixaDiario(){                          //Testes Operações para o caixa (Guarda os valores diários e o apurado geral do mercado)
 		sistema.iniciaCaixaDiario ("16/10/2014");
-		assertNotNull (sistema.pesquisarCaixaDiario("16/10/2014"));
+		assertNotNull (sistema.pesquisaCaixaDiario("16/10/2014"));
 	}
 	@Test (expected = ExcecaoSistemaDeCaixa.class)
 	public void inserirCaixaComDataJaExistente () {
 		this.iniciarCaixaDiario();
 		this.iniciarCaixaDiario();
+	}
+	@Test
+	public void consultarCaixaDiario () {
+		this.iniciarCaixaDiario();
+		assertNotNull (sistema.pesquisaCaixaDiario("16/10/2014"));
 	}
 }
 

@@ -20,7 +20,7 @@ public class GerenteDeCaixa {
 		CaixaDiario diar = new CaixaDiario(data);
 		this.diarias.add(diar);
 	}
-	public CaixaDiario pesquisarDiaria(String data) {
+	public CaixaDiario pesquisaDiaria(String data) {
 		for (CaixaDiario c: this.diarias) {
 			if (c.getData().equals(data)) {
 				return c;

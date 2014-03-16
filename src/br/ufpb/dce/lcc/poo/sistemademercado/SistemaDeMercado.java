@@ -93,8 +93,8 @@ public class SistemaDeMercado {
 		this.caixas.registrar(data);
 	}
 
-	public CaixaDiario pesquisarCaixaDiario(String data) {
-        return this.caixas.pesquisarDiaria (data);
+	public CaixaDiario pesquisaCaixaDiario(String data) {
+        return this.caixas.pesquisaDiaria (data);
 	}
 	
 	
