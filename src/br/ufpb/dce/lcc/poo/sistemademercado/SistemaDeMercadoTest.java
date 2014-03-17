@@ -18,6 +18,11 @@ public class SistemaDeMercadoTest {
 		sistema.cadastraFuncionario("edu","12345","Caixa");
 		assertNotNull(sistema.pesquisaFuncionarioPorNome("edu"));
 	}
+	@Test                                                                      // TESTES FUNCIONARIO
+	public void cadastrarMasDeUmFuncionarioNoSistema () {
+		sistema.cadastraFuncionario("fabio","123","Deposito");
+		assertNotNull(sistema.pesquisaFuncionarioPorNome("fabio"));
+	}
 	@Test
 	public void removerFuncionarioDoSistemaPorCPF () {
 		sistema.cadastraFuncionario("edu","123","Caixa");
@@ -56,6 +61,11 @@ public class SistemaDeMercadoTest {
 		sistema.cadastraProduto("leite", 1234, 8.00);
 		assertNotNull(sistema.pesquisaProdutoPorNome("leite"));
 	}
+	@Test                                                                             //TESTES PRODUTO
+	public void cadastrarMasDeUmProduto(){
+		sistema.cadastraProduto("biscoito", 5555, 3.50);
+		assertNotNull(sistema.pesquisaProdutoPorNome("biscoito"));
+	}
 	@Test
 	public void pesquisarProdutoNome(){
 		this.cadastrarProduto();
@@ -85,6 +95,11 @@ public class SistemaDeMercadoTest {
 		sistema.cadastraFornecedor("Fornecedor de Leite", "Rio Tinto", 88888888,"12345678");
 		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Leite"));
 	}
+	@Test                                                                                  //TESTES FORNECEDOR
+	public void cadastrarMasDeUmFornecedor(){
+		sistema.cadastraFornecedor("Fornecedor de Chocolate", "João Pessoa", 21212121,"09872");
+		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Chocolate"));
+	}
 	@Test (expected = ExcecaoSistemaDeFornecedor.class)
 	public void cadastraMesmoFornecedor () {
 		this.cadastrarFornecedor();
@@ -105,6 +120,11 @@ public class SistemaDeMercadoTest {
 	public void cadastrarCliente(){                                                  // TESTES CLIENTE
 		sistema.cadastroDeCliente("Fabio","2014","Centro");
 		assertNotNull(sistema.pesquisaClientePorNome("Fabio"));
+	}
+	@Test
+	public void cadastrarMasDeUmClienteCliente(){                                                  // TESTES CLIENTE
+		sistema.cadastroDeCliente("Eduardo","242424","Projeto");
+		assertNotNull(sistema.pesquisaClientePorNome("Eduardo"));
 	}
 	@Test (expected = ExcecaoSistemaDeCliente.class)
 	public void cadastrarMesmoCliente () {
