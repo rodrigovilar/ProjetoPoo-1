@@ -52,5 +52,14 @@ public class GerenteDeCliente {
 		}
 		
 	}
-
+	
+	
 }
+
+
+
+
+
+
+
+

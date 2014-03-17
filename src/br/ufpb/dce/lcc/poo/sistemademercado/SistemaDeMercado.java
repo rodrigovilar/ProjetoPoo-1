@@ -7,6 +7,7 @@ public class SistemaDeMercado {
 	GerenteDeCliente clientes;
 	GerenteDeCaixa caixas;
 	
+	
 	public SistemaDeMercado () {
 		funcionarios = new GerenteDeFuncionario ();
 		produtos = new GerenteDeProduto ();
@@ -96,6 +97,16 @@ public class SistemaDeMercado {
 	public CaixaDiario pesquisaCaixaDiario(String data) {
         return this.caixas.pesquisaDiaria (data);
 	}
+
+	public void alterarPrecoDeProduto(int i, double d) {
+		  this.produtos.alteraPreco (i, d);
+		  
+		 }
+
+		 public String pesquisaPrecoDeProduto(int i) {
+		  return this.produtos.pesquisaDescricaoDePrecoDeProduto(i);
+		 }	
+	
 	
 	
 }

@@ -32,4 +32,7 @@ public class Produto {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
+	public String mostrarPreco () {
+		 return "Preco = "+this.preco;
+	}
 }

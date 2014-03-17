@@ -48,6 +48,16 @@ public class GerenteDeProduto {
 		}
 		
 		throw new ExcecaoSistemaDeProduto("O produto não encontrado");
-	}	
+	}
 
+	public void alteraPreco(int i, double d) {
+		  Produto p = this.pesquisaPorCodigo(i);
+		  p.setPreco(d);
+		  
+		 }
+
+		 public String pesquisaDescricaoDePrecoDeProduto(int i) {
+		  Produto p = this.pesquisaPorCodigo(i);
+		  return p.mostrarPreco();
+		 }
 }

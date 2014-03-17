@@ -67,6 +67,12 @@ public class SistemaDeMercadoTest {
 		assertNotNull(sistema.pesquisaProdutoPorNome("biscoito"));
 	}
 	@Test
+	 public void alterarPrecoDeProduto () {
+	  this.cadastrarProduto();
+	  sistema.alterarPrecoDeProduto (1234, 10.0);
+	     assertEquals ("Preco = 10.0", sistema.pesquisaPrecoDeProduto(1234));
+	 }
+	@Test
 	public void pesquisarProdutoNome(){
 		this.cadastrarProduto();
 		assertNotNull(sistema.pesquisaProdutoPorNome("leite"));
@@ -115,6 +121,11 @@ public class SistemaDeMercadoTest {
 		this.cadastrarFornecedor();
 		sistema.removerFornecedorPorCnpj("12345678");
 		assertNull (sistema.pesquisaFornecedorPorCnpj("12345678"));
+	}	
+	@Test (expected = ExcecaoSistemaDeFornecedor.class)
+	public void cadastrarMesmoFornecedorNoSistema () {
+		sistema.cadastraFornecedor("Fornecedor de Chocolate", "João Pessoa", 1010101,"09872");
+		sistema.cadastraFornecedor("Fornecedor de Chocolate", "João Pessoa", 1010101,"09872");
 	}
 	@Test
 	public void cadastrarCliente(){                                                  // TESTES CLIENTE
@@ -174,6 +185,11 @@ public class SistemaDeMercadoTest {
 		this.iniciarCaixaDiario();
 		assertNotNull (sistema.pesquisaCaixaDiario("16/10/2014"));
 	}
+	@Test
+	 public void pesquisarPrecoDeProdutoNoSistema () {
+	  this.cadastrarProduto();
+	     assertEquals ("Preco = 8.0", sistema.pesquisaPrecoDeProduto(1234));
+	 }	
 }
 
 
