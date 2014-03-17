@@ -52,4 +52,13 @@ public class GerenteDeFornecedor {
 		
 	}
 
+	public List<Fornecedor> buscarFornecedores() {
+		if(fornecedores.size() > 0){
+			return this.fornecedores;
+		}
+		else{
+			return null;
+		}
+	}
+
 }

@@ -52,6 +52,29 @@ public class GerenteDeCliente {
 		}
 		
 	}
+
+	public Cliente exibir(String nome) {
+		return (Cliente) this.clientes;
+	}
+
+	public List<Cliente> buscarClientes() {
+		if(clientes.size() > 0){
+			return this.clientes;
+		}
+		else{
+			return null;
+		}
+		
+	}
+
+
+	
+
+	
+
+	
+		
+	
 	
 	
 }

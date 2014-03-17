@@ -56,8 +56,31 @@ public class GerenteDeProduto {
 		  
 		 }
 
-		 public String pesquisaDescricaoDePrecoDeProduto(int i) {
+	public String pesquisaDescricaoDePrecoDeProduto(int i) {
 		  Produto p = this.pesquisaPorCodigo(i);
 		  return p.mostrarPreco();
 		 }
+
+	public List <Produto> buscarProdutos() {
+		if(produtos.size()> 0){
+			return this.produtos;
+		}
+		else{
+			return null;
+		}
+	}
+
+	public boolean verificaSeHaProduto(int codigo) {
+		for(Produto p: this.produtos){
+			if(p.getCodigo() == codigo){
+				return true;
+			}
+		}
+		return false;
+	}
 }
+
+
+
+
+

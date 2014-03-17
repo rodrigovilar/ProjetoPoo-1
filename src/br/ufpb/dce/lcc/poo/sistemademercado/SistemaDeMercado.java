@@ -1,12 +1,14 @@
 package br.ufpb.dce.lcc.poo.sistemademercado;
 
+import java.util.List;
+
 public class SistemaDeMercado {
 	GerenteDeFuncionario funcionarios;
 	GerenteDeProduto produtos;
 	GerenteDeFornecedor fornecedores;
 	GerenteDeCliente clientes;
 	GerenteDeCaixa caixas;
-	
+	GerenteDeItemDePedido pedidos;
 	
 	public SistemaDeMercado () {
 		funcionarios = new GerenteDeFuncionario ();
@@ -14,6 +16,7 @@ public class SistemaDeMercado {
 		fornecedores = new GerenteDeFornecedor();
 		clientes = new GerenteDeCliente();
 		caixas = new GerenteDeCaixa();
+		pedidos = new GerenteDeItemDePedido();
 		
 		
 	}
@@ -100,12 +103,44 @@ public class SistemaDeMercado {
 
 	public void alterarPrecoDeProduto(int i, double d) {
 		  this.produtos.alteraPreco (i, d);
-		  
-		 }
-
-		 public String pesquisaPrecoDeProduto(int i) {
+	}
+	public String pesquisaPrecoDeProduto(int i) {
 		  return this.produtos.pesquisaDescricaoDePrecoDeProduto(i);
-		 }	
+	}
+
+	public List <Produto> exibirProdutos() {
+		return produtos.buscarProdutos();
+	}
+	public List <Cliente> exibirClientes() {
+		return clientes.buscarClientes();
+	}
+
+	public List <Funcionario> exibirFuncionarios() {
+		return funcionarios.buscaFuncionarios();
+	}
+
+	public List <Fornecedor> exibirFornecedores() {
+		return fornecedores.buscarFornecedores();
+	}
+
+	public Fornecedor pesquisaFornecedorPassandoCnpj(String cnpj) {
+		return this.fornecedores.pesquisaPorCnpj(cnpj);
+	}
+
+	public ItemDePedido pesquisaItemDePedido(String cpfCliente, int numeroDoItem) {
+		return this.pedidos.pesquisaItemDePedido (cpfCliente, numeroDoItem);
+	}
+
+	public void cadastrarItemDePedido(Produto produto, Cliente cliente, int numPedido) {
+		pedidos.cadastraItem(produto, cliente, numPedido);
+		
+	}
+
+	
+
+	
+
+	
 	
 	
 	

@@ -18,8 +18,9 @@ public class SistemaDeMercadoTest {
 		sistema.cadastraFuncionario("edu","12345","Caixa");
 		assertNotNull(sistema.pesquisaFuncionarioPorNome("edu"));
 	}
-	@Test                                                                      // TESTES FUNCIONARIO
-	public void cadastrarMasDeUmFuncionarioNoSistema () {
+	@Test                                                                      
+	public void cadastrarMaisDeUmFuncionarioNoSistema () {
+		this.cadastrarFuncionarioNoSistema();
 		sistema.cadastraFuncionario("fabio","123","Deposito");
 		assertNotNull(sistema.pesquisaFuncionarioPorNome("fabio"));
 	}
@@ -61,8 +62,9 @@ public class SistemaDeMercadoTest {
 		sistema.cadastraProduto("leite", 1234, 8.00);
 		assertNotNull(sistema.pesquisaProdutoPorNome("leite"));
 	}
-	@Test                                                                             //TESTES PRODUTO
-	public void cadastrarMasDeUmProduto(){
+	@Test                                                                             
+	public void cadastrarMaisDeUmProduto(){
+		this.cadastrarCliente();
 		sistema.cadastraProduto("biscoito", 5555, 3.50);
 		assertNotNull(sistema.pesquisaProdutoPorNome("biscoito"));
 	}
@@ -101,8 +103,9 @@ public class SistemaDeMercadoTest {
 		sistema.cadastraFornecedor("Fornecedor de Leite", "Rio Tinto", 88888888,"12345678");
 		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Leite"));
 	}
-	@Test                                                                                  //TESTES FORNECEDOR
-	public void cadastrarMasDeUmFornecedor(){
+	@Test                                                                                  
+	public void cadastrarMaisDeUmFornecedor(){
+		this.cadastrarFornecedor();
 		sistema.cadastraFornecedor("Fornecedor de Chocolate", "João Pessoa", 21212121,"09872");
 		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Chocolate"));
 	}
@@ -112,20 +115,30 @@ public class SistemaDeMercadoTest {
 		this.cadastrarFornecedor();
     }
 	@Test
-	public void pesquisaPorFornecedor(){
+	public void pesquisarFornecedorPorNome(){
 		this.cadastrarFornecedor();
 		assertNotNull(sistema.pesquisaFornecedorPeloNome("Fornecedor de Leite"));
+	}
+	@Test
+	public void pesquisarFornecedorPorCnpj(){
+		this.cadastrarFornecedor();
+		assertNotNull(sistema.pesquisaFornecedorPassandoCnpj("12345678"));
 	}
 	@Test 
 	public void removerFornecedor(){
 		this.cadastrarFornecedor();
 		sistema.removerFornecedorPorCnpj("12345678");
 		assertNull (sistema.pesquisaFornecedorPorCnpj("12345678"));
-	}	
+	}
 	@Test (expected = ExcecaoSistemaDeFornecedor.class)
-	public void cadastrarMesmoFornecedorNoSistema () {
-		sistema.cadastraFornecedor("Fornecedor de Chocolate", "João Pessoa", 1010101,"09872");
-		sistema.cadastraFornecedor("Fornecedor de Chocolate", "João Pessoa", 1010101,"09872");
+	public void removerFornecedorInexistente () {
+		sistema.removerFornecedorPorCnpj("09872");
+	}	
+	@Test 
+	public void cadastrarDiferentesFornecedoresNoSistema () {
+		this.cadastrarFornecedor();
+		sistema.cadastraFornecedor("Nestle", "Sousa", 5820000, "22222");
+		assertNotNull(sistema.pesquisaFornecedorPorCnpj("22222"));
 	}
 	@Test
 	public void cadastrarCliente(){                                                  // TESTES CLIENTE
@@ -133,7 +146,8 @@ public class SistemaDeMercadoTest {
 		assertNotNull(sistema.pesquisaClientePorNome("Fabio"));
 	}
 	@Test
-	public void cadastrarMasDeUmClienteCliente(){                                                  // TESTES CLIENTE
+	public void cadastrarMaisDeUmClienteCliente(){                                
+		this.cadastrarCliente();
 		sistema.cadastroDeCliente("Eduardo","242424","Projeto");
 		assertNotNull(sistema.pesquisaClientePorNome("Eduardo"));
 	}
@@ -189,7 +203,56 @@ public class SistemaDeMercadoTest {
 	 public void pesquisarPrecoDeProdutoNoSistema () {
 	  this.cadastrarProduto();
 	     assertEquals ("Preco = 8.0", sistema.pesquisaPrecoDeProduto(1234));
-	 }	
+	 }																			
+	@Test																		// TESTES LISTA DE ITENS CADASTRADO	
+	public void exibirTodosOsProdutos(){
+		this.cadastrarProduto();
+		assertNotNull(sistema.exibirProdutos());
+	}
+	@Test
+	public void exibirTodosOsClientes(){
+		this.cadastrarCliente();
+		assertNotNull(sistema.exibirClientes());
+	}
+	@Test
+	public void exibirTodosOsFuncionarios(){
+		this.cadastrarFuncionarioNoSistema();
+		assertNotNull(sistema.exibirFuncionarios());
+	}
+	@Test
+	public void exibirTodosOsForrnecedores(){
+		this.cadastrarFornecedor();
+		assertNotNull(sistema.exibirFornecedores());
+	}
+	@Test
+	public void criarItemDePedido(){
+		this.cadastrarCliente();
+		Cliente c = sistema.pesquisaClientePorCpf("2014");
+		this.cadastrarProduto();
+		Produto p = sistema.pesquisaProdutoPorCodigo(1234);
+		sistema.cadastrarItemDePedido(p, c, 1);
+		assertNotNull (sistema.pesquisaItemDePedido("2014",1));
+	}
+	@Test (expected = ExcecaoSistemaDeMercado.class)
+	public void pesquisarItemDePedidoInexistente () {
+		sistema.pedidos.pesquisaItemDePedido("1234", 12);
+	}
+	@Test
+	public void criarDoisItensDePedido () {
+		this.criarItemDePedido();
+		sistema.clientes.cadastra("Eduardo","54321","casa");
+		Cliente c = sistema.pesquisaClientePorCpf("54321");
+		sistema.produtos.cadastra("feijao",333 , 3.00);
+		Produto p = sistema.pesquisaProdutoPorCodigo(333);
+		sistema.cadastrarItemDePedido(p, c, 122);
+		assertNotNull (sistema.pesquisaItemDePedido("54321", 122));
+	}
+	@Test
+	public void pesquisarItemDePedido () {
+		this.criarItemDePedido();
+		assertNotNull (sistema.pesquisaItemDePedido("2014", 1));
+	}
+	
 }
 
 

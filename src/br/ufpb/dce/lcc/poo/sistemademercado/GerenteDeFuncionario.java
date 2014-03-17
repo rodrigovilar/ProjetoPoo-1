@@ -51,4 +51,14 @@ public class GerenteDeFuncionario {
 		}
 		return f2;
 	}
+
+	public List<Funcionario> buscaFuncionarios() {
+		if(funcionarios.size() > 0){
+			return this.funcionarios;
+		}
+		else{
+			return null;
+		}
+		
+	}
 }
