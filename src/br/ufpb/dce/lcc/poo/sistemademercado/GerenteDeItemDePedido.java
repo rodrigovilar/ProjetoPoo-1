@@ -23,4 +23,32 @@ public class GerenteDeItemDePedido {
 		}
 		throw new ExcecaoSistemaDeMercado ("Item Inexistente!");
 	}
+
+	public List<ItemDePedido> buscarItemDePedido() {
+		if(itensPedido.size()> 0){
+			return this.itensPedido;
+		}
+		else{
+			return null;
+		}
+	}
+
+	public void remover(int numProduto) {
+		boolean remove = false;
+		for(ItemDePedido i: this.itensPedido){
+			if(i.getNumeroDeItem() ==numProduto){
+				this.itensPedido.remove(i);
+				remove = true;
+				break;
+			}
+		}
+		if(!remove){
+			throw new ExcecaoSistemaDeMercado("Item Inexistente");
+		}
+		
+	}
+
+	
+
+	
 }

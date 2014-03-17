@@ -225,6 +225,11 @@ public class SistemaDeMercadoTest {
 		assertNotNull(sistema.exibirFornecedores());
 	}
 	@Test
+	public void exibirTodososItemDePedido(){
+		this.criarItemDePedido();
+		assertNotNull (sistema.exibirItemDePedido());
+	}
+	@Test
 	public void criarItemDePedido(){
 		this.cadastrarCliente();
 		Cliente c = sistema.pesquisaClientePorCpf("2014");
@@ -252,6 +257,12 @@ public class SistemaDeMercadoTest {
 		this.criarItemDePedido();
 		assertNotNull (sistema.pesquisaItemDePedido("2014", 1));
 	}
+	@Test (expected = ExcecaoSistemaDeMercado.class)
+	public void removerItemDePedidoPorNumeroDeItem(){
+		sistema.romorePedido(1);
+		
+	}
+	
 	
 }
 

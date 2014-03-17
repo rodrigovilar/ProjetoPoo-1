@@ -122,6 +122,10 @@ public class SistemaDeMercado {
 	public List <Fornecedor> exibirFornecedores() {
 		return fornecedores.buscarFornecedores();
 	}
+	public List <ItemDePedido> exibirItemDePedido() {
+		return pedidos.buscarItemDePedido();
+	}
+
 
 	public Fornecedor pesquisaFornecedorPassandoCnpj(String cnpj) {
 		return this.fornecedores.pesquisaPorCnpj(cnpj);
@@ -136,6 +140,12 @@ public class SistemaDeMercado {
 		
 	}
 
+	public void romorePedido(int numProduto) {
+		pedidos.remover(numProduto);
+		
+	}
+
+	
 	
 
 	
