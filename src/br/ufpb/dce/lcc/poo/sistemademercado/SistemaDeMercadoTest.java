@@ -260,7 +260,6 @@ public class SistemaDeMercadoTest {
 	@Test (expected = ExcecaoSistemaDeMercado.class)
 	public void removerItemDePedidoPorNumeroDeItem(){
 		sistema.romorePedido(1);
-		
 	}
 	
 	
